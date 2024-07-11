@@ -10,19 +10,21 @@ function getRates(userCurrency) {
         const errorMessage = `Error: ${response.message}`;
         throw new Error(errorMessage);
       }
-      return response.conversion_rates[userCurrency];
+      printElements(response.conversion_rates[userCurrency]);
     });
+}
+
+function printElements(rate) {
+  const amount = parseFloat(document.querySelector("#usd-amount").value);
+  const currency = document.querySelector("#currency-to-convert").value;
+  document.querySelector("#output").append(`$${amount} USD is ${amount * rate} ${currency}`);
 }
 
 function handleUSDConversion(event) {
   event.preventDefault();
   document.querySelector("#output").innerText = null;
-  const selectedAmount = parseFloat(document.querySelector("#usd-amount").value);
-  const selectedCurrency = document.querySelector("#currency-to-convert").value;
-  const outputP = document.createElement("p");
-  outputP.append(`$${selectedAmount} USD is ___ ${selectedCurrency}`);
-  document.querySelector("#output").append(outputP);
-  getRates(selectedCurrency);
+  const currency = document.querySelector("#currency-to-convert").value;
+  getRates(currency);
 }
 
 window.addEventListener("load", function() {
