@@ -17,8 +17,12 @@ function getRates(userCurrency) {
 }
 
 function printElements(rate, currency) {
-  const amount = parseFloat(document.querySelector("#usd-amount").value);
-  document.querySelector("#output").append(`$${amount} USD is ${amount * rate} ${currency}`);
+  const amount = document.querySelector("#usd-amount").value;
+  if (amount.match(/[^0-9.]/g)) {
+    document.querySelector("#output").append("Please enter a valid number.");
+  } else {
+    document.querySelector("#output").append(`$${amount} USD is ${(parseFloat(amount) * rate).toFixed(3)} ${currency}`);
+  }
 }
 
 function handleUSDConversion(event) {
