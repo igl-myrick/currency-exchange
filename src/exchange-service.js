@@ -1,6 +1,6 @@
 export default class ExchangeService {
-  static getConversion() {
-    return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`)
+  static getConversion(requestURL) {
+    return fetch(requestURL)
       .then(function(response) {
         if (!response.ok) {
           const errorMessage = `${response.status} ${response.statusText}`;
