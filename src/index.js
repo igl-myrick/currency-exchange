@@ -8,7 +8,7 @@ function getRates(userCurrency) {
     .then(function(response) {
       if (response instanceof Error) {
         const errorMessage = `Error: ${response.message}`;
-        throw new Error(errorMessage);
+        document.querySelector("#output").append(errorMessage);
       }
       printElements(response.conversion_rates[userCurrency], userCurrency);
     });
