@@ -9,6 +9,8 @@ function getRates(userCurrency) {
       if (response instanceof Error) {
         const errorMessage = `Error: ${response.message}`;
         document.querySelector("#output").append(errorMessage);
+      } else if (!response.conversion_rates[userCurrency]) {
+        return document.querySelector("#output").append("Please enter a valid currency.");
       }
       printElements(response.conversion_rates[userCurrency], userCurrency);
     });
@@ -23,7 +25,11 @@ function handleUSDConversion(event) {
   event.preventDefault();
   document.querySelector("#output").innerText = null;
   const currency = document.querySelector("#currency-to-convert").value.toUpperCase();
-  getRates(currency);
+  if (currency.length !== 3) {
+    document.querySelector("#output").innerText = "Please enter a valid 3-letter currency code.";
+  } else {
+    getRates(currency);
+  }
 }
 
 window.addEventListener("load", function() {
