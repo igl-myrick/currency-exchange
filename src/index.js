@@ -8,12 +8,16 @@ function getRates(userCurrency) {
     .then(function(response) {
       if (response instanceof Error) {
         const errorMessage = `Error: ${response.message}`;
-        document.querySelector("#output").append(errorMessage);
+        printError(errorMessage);
       } else if (!response.conversion_rates[userCurrency]) {
-        return document.querySelector("#output").append("Please enter a valid currency.");
+        return printError("Please enter a valid currency.");
       }
       printElements(response.conversion_rates[userCurrency], userCurrency);
     });
+}
+
+function printError(error) {
+  document.querySelector("#output").append(error);
 }
 
 function printElements(rate, currency) {
