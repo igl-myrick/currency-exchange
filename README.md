@@ -21,11 +21,20 @@ _A website where users can view conversions from US dollars into various other c
 ## Setup/Installation Requirements
 
 * _You will need Node.js (`https://nodejs.org/en/download/current`) to run the program._
-* _1: Clone the repository to a folder of choice on your machine (by either using the "Code" button on the GitHub page, or in a terminal application using `git clone https://github.com/igl-myrick/currency-exchange`)._
-* _2: Using a terminal application such as Git Bash or Windows Command Prompt, navigate to the top level of the program folder and run `npm install`. This may take some time._
-* _3: Next, run `npm run build` to build the program._
-* _4: Once the program is built, run `npm run start` to open and use the program._
-* _To view tests, run `npm run test`._
+
+_1: Clone the repository to a folder of choice on your machine (by either using the "Code" button on the GitHub page, or in a terminal application using `git clone https://github.com/igl-myrick/currency-exchange`)._
+
+_2: Register for a free API key at the ExchangeRate API website (`https://www.exchangerate-api.com/`). Once you have registered you can view your API key on the website dashboard (`https://app.exchangerate-api.com/dashboard`)._
+
+_3: Using a terminal application such as Git Bash or Windows Command Prompt, navigate to the top level of the program folder and run `npm install`. This may take some time._
+
+_4: Create a file in the top level of the folder called `.env`. Within this file, you store your API key by writing `API_KEY=`, followed by your API key from the ExchangeRate API website._
+
+_5: Next, run `npm run build` to build the program._
+
+_6: Once the program is built, run `npm run start` to open and use the program._
+
+_7: Optionally, to view tests, run `npm run test`._
 
 ## Known Bugs
 
